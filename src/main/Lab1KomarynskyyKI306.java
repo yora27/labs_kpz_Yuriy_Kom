@@ -78,7 +78,7 @@ public class Lab1KomarynskyyKI306 {
         
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((i >= half && j < half) || (i < half && j >= half)) {
+                if ((i >= half && j >= half) || (i < half && j< half)) {
                     array[i][j] = filler;
                 } else {
                     array[i][j] = ' ';
