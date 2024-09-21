@@ -5,8 +5,7 @@ import java.util.*;
 /**
  * Клас <code>Lab1KomarynskyyKI306</code> виконує програму до завдання лабораторної роботи №1.
  * Програма створює квадратну матрицю із заштрихованими лівим нижнім та правим верхнім квадрантами.
- * @author Yuriy Komarynskyi
- * 
+ * @author Komarynskyi Yuriy
  * @version 2.0
  */
 public class Lab1KomarynskyyKI306 {
@@ -73,19 +72,20 @@ public class Lab1KomarynskyyKI306 {
      * @return Двовимірний масив символів.
      */
     private static char[][] createArray(int size, char filler) {
-        char[][] array = new char[size][size];
+        char[][] array = new char[size][];
         int half = size / 2;
-        
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if ((i >= half && j < half) || (i < half && j >= half)) {
-                    array[i][j] = filler;
-                } else {
-                    array[i][j] = ' ';
-                }
+
+        for (int i = 0; i < size; i++) {            
+                array[i] = new char[half];
+                
+                for (int j = half; j < size; j++) {
+                    array[i][j - half] = filler;
+                } 
+                
+           
+                
+                
             }
-        }
-        
         return array;
     }
     
@@ -94,8 +94,21 @@ public class Lab1KomarynskyyKI306 {
      * @param array Двовимірний масив для виведення.
      */
     private static void printArray(char[][] array) {
-        for (char[] row : array) {
-            System.out.println(new String(row));
+        int size = array.length;
+        int half = size / 2;
+        for (int i = 0; i < size; i++) {
+            if (i < half) {
+                System.out.print(new String(array[i]));
+                for (int j = half; j < size; j++) {
+                    System.out.print(' ');
+                }
+                System.out.println();
+            } else {
+                for (int j = 0; j < half; j++) {
+                    System.out.print(' ');
+                }
+                System.out.println(new String(array[i]));
+            }
         }
     }
     
@@ -107,8 +120,22 @@ public class Lab1KomarynskyyKI306 {
      */
     private static void saveArrayToFile(char[][] array, String filename) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-            for (char[] row : array) {
-                writer.println(new String(row));
+            int size = array.length;
+            int half = size / 2;
+            
+            for (int i = 0; i < size; i++) {
+                if (i < half) {
+                    writer.print(new String(array[i]));
+                    for (int j = half; j < size; j++) {
+                        writer.print(' ');
+                    }
+                } else {
+                    for (int j = 0; j < half; j++) {
+                        writer.print(' ');
+                    }
+                    writer.print(new String(array[i]));
+                }
+                writer.println(); // Перехід на новий рядок
             }
         }
         System.out.println("Масив збережено у файл: " + filename);
