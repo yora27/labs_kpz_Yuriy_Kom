@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Lab3KomarynskyyKI306","l":"Lake"},{"p":"Lab3KomarynskyyKI306","l":"Reservoir"},{"p":"Lab3KomarynskyyKI306","l":"ReservoirApp"},{"p":"Lab3KomarynskyyKI306","l":"WaterManagement"}];updateSearchResults();

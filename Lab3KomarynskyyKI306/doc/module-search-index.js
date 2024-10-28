@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"Lab3KomarynskyyKI306"}];updateSearchResults();
